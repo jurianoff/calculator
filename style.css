@@ -1,0 +1,130 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+body  {
+    background-image: linear-gradient(to bottom right, rgb(179, 98, 24), rgba(253, 197, 119, 0.562), rgb(206, 134, 1));
+    height:100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculator {
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    height: 700px;
+    width: 600px;
+    background-color: beige;
+    display: flex;
+    flex-flow:column wrap;
+    align-items: center;
+}
+
+.display {
+    height: 112px;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    margin: 22px 0px 10px;
+    background-color: azure;
+}
+
+.lastInput {
+    font-size: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: right;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.result {
+    display: flex;
+    justify-content: right;
+    font-size: 60px;
+    padding-right: 10px;
+    height: 70px;
+    align-items:flex-end;
+}
+
+.buttons {
+    border-radius: 5px;
+    height: 530px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0px;
+}
+
+.numbers {
+    gap: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 3;
+    padding: 4px;
+    gap: 5px;
+    justify-content: center;
+}
+
+.numbers button {
+    border: 1px solid black;
+    flex: 1;
+    min-width: 32%;
+    border-radius: 10px;
+}
+
+.numbers .zero {
+    flex: 2.2;
+}
+
+.operators {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+    padding: 4px 0 4px;
+}
+
+.operators button {
+    flex: 1;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.clearAndEquals {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    justify-content: space-around;
+}
+
+.clear {
+    flex: 1;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.equals {
+    flex: 3.2;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+
