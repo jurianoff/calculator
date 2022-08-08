@@ -61,6 +61,10 @@ numbers.forEach((button) => {
         newInput += button.textContent;
         lastInput.textContent = input;
         result.textContent = newInput;
+        if (result.textContent.length > 14 || lastInput.textContent.length > 14) {
+            result.textContent = 'Num too long';
+            lastInput.textContent = '';
+        }
     });
 });
 
@@ -69,20 +73,25 @@ operators.forEach((operator) => {
         if (input) {
             input = calc(input);
         }
+        result.textContent = Math.round(calc(input)*100)/100;
         input += memory + operator.textContent;
         lastInput.textContent += operator.textContent;
-        result.textContent = newInput;
         newInput = '';
-        
+        if (result.textContent == 'Infinity') {
+            result.textContent = 'Just don\'t';
+        }
     })
 })
 
 equals.addEventListener('click', () => {
     lastInput.textContent = input;
-    result.textContent = calc(input);
+    result.textContent = Math.round(calc(input)*100)/100;
     memory = calc(input);
     input = '';
     newInput = '';
+    if (result.textContent == 'Infinity') {
+        result.textContent = 'Just don\'t';
+    }
 })
 
 clear.addEventListener('click' , () => {
@@ -92,3 +101,4 @@ clear.addEventListener('click' , () => {
     result.textContent = '-';
     lastInput.textContent = '-';
 })
+
