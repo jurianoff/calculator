@@ -33,6 +33,7 @@ function operate(operator,a,b) {
 
 let input = '';
 let memory = '';
+let newInput = '';
 
 const lastInput = document.querySelector('.lastInput');
 const result = document.querySelector('.result');
@@ -42,24 +43,41 @@ const operators = document.querySelectorAll(".operators button");
 const clear = document.querySelector(".clear");
 const equals = document.querySelector(".equals");
 
+function calc(res) {
+    return new Function('return ' + res)();
+}
+
 numbers.forEach((button) => {
     button.addEventListener('click', () => {
         input += button.textContent;
-        result.textContent = input;
+        newInput += button.textContent;
+        lastInput.textContent = input;
+        result.textContent = newInput;
     });
 });
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
-        input += operator.textContent;
-        result.textContent = input;
+        input = calc(input);
+        input += memory + operator.textContent;
+        lastInput.textContent += operator.textContent;
+        result.textContent = newInput;
+        newInput = '';
     })
 })
 
 equals.addEventListener('click', () => {
     lastInput.textContent = input;
-    function calc(res) {
-        return new Function('return ' + res)();
-    }
     result.textContent = calc(input);
+    memory = calc(input);
+    input = '';
+    newInput = '';
+})
+
+clear.addEventListener('click' , () => {
+    input = '';
+    memory = '';
+    newInput = '';
+    result.textContent = '-';
+    lastInput.textContent = '-';
 })
