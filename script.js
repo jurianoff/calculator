@@ -35,6 +35,8 @@ let input = '';
 let memory = '';
 let newInput = '';
 
+const re = /undefined/g;
+
 const lastInput = document.querySelector('.lastInput');
 const result = document.querySelector('.result');
 
@@ -44,7 +46,13 @@ const clear = document.querySelector(".clear");
 const equals = document.querySelector(".equals");
 
 function calc(res) {
-    return new Function('return ' + res)();
+    try {
+        return new Function('return ' + res)();
+    }catch(e) {
+        console.log("Invalid Expression");
+        result.textContent = 'ERROR';
+        lastInput.textContent = 'Invalid Expression';
+    }
 }
 
 numbers.forEach((button) => {
@@ -58,11 +66,14 @@ numbers.forEach((button) => {
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
-        input = calc(input);
+        if (input) {
+            input = calc(input);
+        }
         input += memory + operator.textContent;
         lastInput.textContent += operator.textContent;
         result.textContent = newInput;
         newInput = '';
+        
     })
 })
 
